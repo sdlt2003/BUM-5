@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faculty.project.controllers.GradingController">
+   <children>
+      <Label layoutX="80.0" layoutY="111.0" text="Subject:" />
+      <Label layoutX="79.0" layoutY="168.0" text="Student:" />
+      <Label layoutX="84.0" layoutY="229.0" text="Grade:" />
+      <ComboBox fx:id="comboStudents" layoutX="176.0" layoutY="164.0" prefHeight="26.0" prefWidth="219.0" />
+      <TextField fx:id="grade" layoutX="171.0" layoutY="225.0" />
+      <Label layoutX="121.0" layoutY="33.0" text="Grade your students:">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <Button layoutX="207.0" layoutY="313.0" mnemonicParsing="false" onAction="#setGrade" text="Set grade" />
+      <ComboBox fx:id="comboSubjects" layoutX="176.0" layoutY="107.0" prefHeight="26.0" prefWidth="219.0" />
+      <Label fx:id="lblMessage" layoutX="213.0" layoutY="275.0" text=" " />
+   </children>
+</AnchorPane>
