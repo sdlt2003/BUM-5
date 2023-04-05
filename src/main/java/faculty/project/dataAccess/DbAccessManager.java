@@ -240,7 +240,7 @@ public class DbAccessManager {
             pstmt.setInt(1, subject.getId());
             pstmt.setInt(2, currentYear);
             ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 String studentId = rs.getString("student_id");
                 students.add(getStudent(studentId));
             }
@@ -284,8 +284,17 @@ public class DbAccessManager {
      * @return DB successfully updated
      */
     public boolean gradeStudent(Student student, Subject subject, float grade, Teacher teacher) {
-        // TBD
-        return false;
+        String sql = "UPDATE academic_record SET grade = ?, teacher_id = ? WHERE student_id = ? AND subject_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setFloat(1, grade);
+            pstmt.setInt(2, teacher.getDni());
+            pstmt.setInt(3, student.getDni());
+            pstmt.setInt(4, subject.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 
     public void assign(Subject subject, Teacher teacher) {
